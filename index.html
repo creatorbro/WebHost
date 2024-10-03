@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Search Bar Redirect</title>
     <script>
         function searchSite() {
             var searchTerm = document.getElementById("searchInput").value.toLowerCase();
@@ -33,12 +33,63 @@
             });
         });
     </script>
+    <style>
+        input {
+            color: black; /* Black text in input field */
+            background-color: gray;
+            border-radius: 5px;
+            width: 200px;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            position: relative;
+        }
+
+        /* Black placeholder text */
+        input::placeholder {
+            color: black;
+        }
+
+        /* Flashed caret (typing indicator) */
+        input::after {
+            content: '|';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: black;
+            opacity: 1;
+            animation: blink 1s step-start infinite;
+        }
+
+        /* Animation for the blinking caret */
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: gray;
+            color: black; /* Black text on the button */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: red; /* Red button on hover */
+        }
+    </style>
 </head>
 <body style="background-color: black; color: white; font-family: Arial, sans-serif;">
-    <h2>Search Bar Redirect</h2>
+    <h2></h2>
     <div style="display: flex; justify-content: center; align-items: center;">
-        <input type="text" id="searchInput" placeholder="TAKE A GUESS" style="padding: 10px; width: 300px; margin-right: 10px; border-radius: 5px;">
-        <button onclick="searchSite()" style="padding: 10px 20px; border-radius: 5px; background-color: #4CAF50; color: white;">Search</button>
+        <input type="text" id="searchInput" placeholder="TAKE A GUESS">
+        <button onclick="searchSite()">Search</button>
     </div>
 </body>
 </html>
