@@ -8,17 +8,17 @@
         function searchSite() {
             var searchTerm = document.getElementById("searchInput").value.toLowerCase();
             var searchOptions = {
-                "google": "https://www.google.com",
-                "facebook": "https://www.facebook.com",
-                "twitter": "https://www.twitter.com"
+                "google": "https://www.youtube.com/watch?v=zL19uMsnpSU",
+                "facebook": "https://www.youtube.com/watch?v=noY-Sd0DZqM&pp=ygUMbnVjbGVhciBib21i",
+                "twitter": "https://www.x.com"
             };
             var defaultUrl = "https://www.example.com";
 
             // Check if the search term matches any key in the searchOptions object
             if (searchOptions[searchTerm]) {
-                window.open(searchOptions[searchTerm], '_blank'); // Open the matched site in a new tab
+                window.top.open(searchOptions[searchTerm], '_blank'); // Open the matched site in a new tab outside the iframe
             } else {
-                window.open(defaultUrl, '_blank'); // Open the default URL if no match
+                window.top.open(defaultUrl, '_blank'); // Open the default URL if no match outside the iframe
             }
         }
 
@@ -27,6 +27,7 @@
             var input = document.getElementById("searchInput");
             input.addEventListener("keydown", function(event) {
                 if (event.key === "Enter") {
+                    event.preventDefault(); // Prevent form submission
                     searchSite(); // Trigger searchSite function when Enter is pressed
                 }
             });
