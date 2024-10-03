@@ -3,62 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .search-container {
-            display: flex;
-            flex-direction: row;
-        }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid gray;
-            background-color: black;
-            color: gray;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: gray;
-            color: black;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #5a1000;
-        }
-    </style>
+    <title>Search Bar Redirect</title>
     <script>
         function searchSite() {
             var searchTerm = document.getElementById("searchInput").value.toLowerCase();
             var searchOptions = {
-                "google": "https://youtu.be/zL19uMsnpSU",
+                "google": "https://www.google.com",
                 "facebook": "https://www.facebook.com",
                 "twitter": "https://www.twitter.com"
             };
             var defaultUrl = "https://www.example.com";
+
+            // Check if the search term matches any key in the searchOptions object
             if (searchOptions[searchTerm]) {
-                window.location.href = searchOptions[searchTerm];
+                window.open(searchOptions[searchTerm], '_blank'); // Open the matched site in a new tab
             } else {
-                window.location.href = defaultUrl;
+                window.open(defaultUrl, '_blank'); // Open the default URL if no match
             }
         }
+
+        // Add event listener for the Enter key
+        document.addEventListener("DOMContentLoaded", function() {
+            var input = document.getElementById("searchInput");
+            input.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    searchSite(); // Trigger searchSite function when Enter is pressed
+                }
+            });
+        });
     </script>
 </head>
-<body>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="TAKE A GUESS">
-        <button onclick="searchSite()">ENTER</button>
+<body style="background-color: black; color: white; font-family: Arial, sans-serif;">
+    <h2>Search Bar Redirect</h2>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <input type="text" id="searchInput" placeholder="Enter site name" style="padding: 10px; width: 300px; margin-right: 10px; border-radius: 5px;">
+        <button onclick="searchSite()" style="padding: 10px 20px; border-radius: 5px; background-color: #4CAF50; color: white;">Search</button>
     </div>
 </body>
 </html>
