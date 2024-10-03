@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar Redirect</title>
+    <script>
+        function searchSite() {
+            var searchTerm = document.getElementById("searchInput").value.toLowerCase();
+            var searchOptions = {
+                "google": "https://www.google.com",
+                "facebook": "https://www.facebook.com",
+                "twitter": "https://www.twitter.com"
+            };
+            var defaultUrl = "https://www.example.com";
+            if (searchOptions[searchTerm]) {
+                window.location.href = searchOptions[searchTerm];
+            } else {
+                window.location.href = defaultUrl;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Search Bar Redirect</h2>
+    <input type="text" id="searchInput" placeholder="Enter site name">
+    <button onclick="searchSite()">Search</button>
+</body>
+</html>
+
